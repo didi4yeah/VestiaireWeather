@@ -10,16 +10,14 @@ It's possible to click on header (current weather day) and each forecast weather
 ####API minimum level: 21
 
 ##Design
-It could seems a bit gloomy at start but i took in fact as the primary color the color used for the Vestiaire Collective android app.
-I create a Google Palette and use some of these colors. And at the end I kinda like this style.
+It seems a little bit gloomy at first glance but I used the same primary color as the Vestiaire Collective Android app. I created a Google Palete and used some of these colors, which suited my style in the end.
 
 ![Palette](https://raw.github.com/didi4yeah/VestiaireWeather/master/screenshots/VestaireWeather_palette.png "Palette")
 
-Also i used ConstraintLayout as a new feature for me (as i told in interview i wanted to try this).
-It is efficient but many bugs in layout editor could appear so kinda frustating too for now.
+I used ConstraintLayout as a new feature as I've already told I wanted to try this in the interview. It's efficient but many bugs in the layout editor could appear making it a little frustrating to use at the moment.
 
 ##Architecture
-I made a MVP architecture to decoupled as much as possible different purposes.
+I made an MVP architecture to decoupled as much as different purposes as possible.
 In practice, "View" layer (fragment) will communicate with "Presenter" layer that will transport "commands" to "Model" layer that will get back data for instance. Data will then get back to "Presenter" and "View" layer at last.
 
 ##Animations
