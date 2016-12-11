@@ -15,4 +15,5 @@ public interface ActivityViewCommonOps {
     void replaceMainFragment(Fragment destFragment, List<SharedElement> listSharedElements, boolean addToBackStack, String tag);
     void showProgressDialog(String message, boolean cancelable);
     void hideProgressDialog();
+    void onBackPressed();
 }

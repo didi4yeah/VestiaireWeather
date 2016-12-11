@@ -67,6 +67,7 @@ public class HomeWeatherFragmentView extends BaseMvpFragmentView
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_weather_home, container, false);
         ButterKnife.bind(this, view);
+        showNavigationIcon(false);
         loadWeatherForecast();
         return view;
     }

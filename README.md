@@ -34,7 +34,6 @@ A click on an item of the left pane will change content in the right pane to get
 ![Tablet home](https://raw.github.com/didi4yeah/VestiaireWeather/master/screenshots/VestaireWeather_tablet.png "Tablet home")
 
 ##TODO
-* Toolbar arrow implem
 * Network error (timeout)
 * Snackbar messages
 * List selector in tablet mode to know wich element is selected

@@ -27,11 +27,17 @@ import com.mikepenz.iconics.view.IconicsImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by didi on 11/12/2016.
  */
 
 public class BaseActivity extends AppCompatActivity implements ActivityViewCommonOps, OnCustomItemSelectedListener, OnCurrentWeatherLoadedListener {
+
+    @BindView(R.id.toolbar)
+    public Toolbar toolbar;
 
     ProgressDialog progressDialog;
 
@@ -41,9 +47,9 @@ public class BaseActivity extends AppCompatActivity implements ActivityViewCommo
         LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-        if(getSupportActionBar() != null) getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(getSupportActionBar() != null) getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         //Show Home weather list fragment if handset or tablet
         replaceMainFragment(HomeWeatherFragmentView.newInstance(), null, false, HomeWeatherFragmentView.TAG);
@@ -128,6 +134,11 @@ public class BaseActivity extends AppCompatActivity implements ActivityViewCommo
     @Override
     public void hideProgressDialog() {
         if(progressDialog != null && progressDialog.isShowing()) progressDialog.dismiss();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     @Override
