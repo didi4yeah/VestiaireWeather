@@ -35,5 +35,6 @@ A click on an item of the left pane will change content in the right pane to get
 * List selector in tablet mode to know wich element is selected
 * Offline mode (even though app won't crash if no network), was too long to do it but architecture is ready for it since model layer can be used to get back data from database for instance
 * Add colors (will be the case if adding any FAB or widget since colorAccent is pink ;)
+* Handling properly rotation configuration changes
 
 
