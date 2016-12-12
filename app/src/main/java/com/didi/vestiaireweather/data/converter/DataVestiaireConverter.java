@@ -29,7 +29,7 @@ public class DataVestiaireConverter {
 
             //Temperature part
             if(weatherDayApi.getWeatherTempApi() != null) {
-                weatherDayVestiaire.setTempDay((int) weatherDayApi.getWeatherTempApi().getDayTemp());
+                weatherDayVestiaire.setTempDay((int) Math.round(weatherDayApi.getWeatherTempApi().getDayTemp()));
             }
 
             //Weather desc part
