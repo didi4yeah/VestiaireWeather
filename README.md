@@ -16,6 +16,9 @@ It seems a little bit gloomy at first glance but I used the same primary color a
 
 I used ConstraintLayout as a new feature as I've already told I wanted to try this in the interview. It's efficient but many bugs in the layout editor could appear making it a little frustrating to use at the moment.
 
+Also i used a font icon, so drawables are resizable and "tintable".
+Thanks to this aweome weather font icon https://erikflowers.github.io/weather-icons/
+
 ##Architecture
 I made an MVP architecture to decoupled as much as different purposes as possible.
 In practice, "View" layer (fragment) will communicate with "Presenter" layer that will transport "commands" to "Model" layer that will get back data for instance. Data will then get back to "Presenter" and "View" layer at last.
