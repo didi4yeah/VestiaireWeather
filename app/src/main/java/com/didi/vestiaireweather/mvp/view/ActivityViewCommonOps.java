@@ -3,6 +3,7 @@ package com.didi.vestiaireweather.mvp.view;
 import android.support.v4.app.Fragment;
 
 import com.didi.vestiaireweather.data.model.android.SharedElement;
+import com.didi.vestiaireweather.utils.SnackBarUtils;
 
 import java.util.List;
 
@@ -16,4 +17,5 @@ public interface ActivityViewCommonOps {
     void showProgressDialog(String message, boolean cancelable);
     void hideProgressDialog();
     void onBackPressed();
+    void showSnackBar(int resStringId, String errorValue, SnackBarUtils.SnackBarType snackBarType);
 }

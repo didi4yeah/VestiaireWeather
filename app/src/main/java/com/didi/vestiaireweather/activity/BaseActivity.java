@@ -2,6 +2,7 @@ package com.didi.vestiaireweather.activity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -20,6 +21,7 @@ import com.didi.vestiaireweather.listener.OnCustomItemSelectedListener;
 import com.didi.vestiaireweather.mvp.view.ActivityViewCommonOps;
 import com.didi.vestiaireweather.mvp.view.DetailsWeatherFragmentView;
 import com.didi.vestiaireweather.mvp.view.HomeWeatherFragmentView;
+import com.didi.vestiaireweather.utils.SnackBarUtils;
 import com.didi.vestiaireweather.utils.StringUtils;
 import com.mikepenz.iconics.context.IconicsLayoutInflater;
 import com.mikepenz.iconics.view.IconicsImageView;
@@ -36,8 +38,10 @@ import butterknife.ButterKnife;
 
 public class BaseActivity extends AppCompatActivity implements ActivityViewCommonOps, OnCustomItemSelectedListener, OnCurrentWeatherLoadedListener {
 
+    @BindView(R.id.coordinator)
+    CoordinatorLayout coordinatorLayout;
     @BindView(R.id.toolbar)
-    public Toolbar toolbar;
+    Toolbar toolbar;
 
     ProgressDialog progressDialog;
 
@@ -139,6 +143,17 @@ public class BaseActivity extends AppCompatActivity implements ActivityViewCommo
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    public void showSnackBar(int resStringId, String errorValue, SnackBarUtils.SnackBarType snackBarType) {
+        String snackMessage;
+        if(StringUtils.isNotNullOrEmpty(errorValue))
+            snackMessage = getString(resStringId, errorValue);
+        else
+            snackMessage = getString(resStringId);
+
+        SnackBarUtils.showSnackBar(this, coordinatorLayout, snackMessage, snackBarType);
     }
 
     @Override

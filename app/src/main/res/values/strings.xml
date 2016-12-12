@@ -15,5 +15,7 @@
     <string name="weather_wind_direction">{wic-wind-direction}</string>
     <string name="weather_wind_direction_with_value">%1$d degrés</string>
 
+    <string name="error_generic">Oups ! Une erreur est survenue, veuillez réessayer</string>
     <string name="error_generic_with_info">Oups ! Une erreur est survenue: %1$s</string>
+    <string name="error_network">Pas internet ! Regarde par la fenêtre :D</string>
 </resources>

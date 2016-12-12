@@ -3,7 +3,6 @@ package com.didi.vestiaireweather.mvp.presenter;
 import com.didi.vestiaireweather.data.model.vestiaire.WeatherDayVestiaire;
 import com.didi.vestiaireweather.mvp.MVP_HomeWeather;
 import com.didi.vestiaireweather.mvp.model.HomeWeatherModel;
-import com.tinmegali.mvp.mvp.GenericPresenter;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
  * "Presenter" layer for Home weather
  */
 
-public class HomeWeatherPresenter extends GenericPresenter<MVP_HomeWeather.RequiredPresenterOps,
+public class HomeWeatherPresenter extends BaseMVPPresenter<MVP_HomeWeather.RequiredPresenterOps,
         MVP_HomeWeather.ProvidedModelOps, MVP_HomeWeather.RequiredViewOps, HomeWeatherModel>
         implements MVP_HomeWeather.RequiredPresenterOps, MVP_HomeWeather.ProvidedPresenterOps {
 
@@ -29,18 +28,9 @@ public class HomeWeatherPresenter extends GenericPresenter<MVP_HomeWeather.Requi
     }
 
     @Override
-    public void onDestroy(boolean isChangingConfiguration) {
-        //Don't call super except activity (not fragment) is being destroyed !!
-        //super.onDestroy(isChangingConfiguration);
-    }
-
-    @Override
     public void onConfigurationChanged(MVP_HomeWeather.RequiredViewOps view) {
         setView(view);
     }
-
-    @Override
-    public void onBackPressed() {}
 
     ///My operations///
 

@@ -2,14 +2,13 @@ package com.didi.vestiaireweather.mvp.presenter;
 
 import com.didi.vestiaireweather.mvp.MVP_DetailsWeather;
 import com.didi.vestiaireweather.mvp.model.DetailsWeatherModel;
-import com.tinmegali.mvp.mvp.GenericPresenter;
 
 /**
  * Created by didi on 11/12/2016.
  * "Presenter" layer for Details weather
  */
 
-public class DetailsWeatherPresenter extends GenericPresenter<MVP_DetailsWeather.RequiredPresenterOps,
+public class DetailsWeatherPresenter extends BaseMVPPresenter<MVP_DetailsWeather.RequiredPresenterOps,
         MVP_DetailsWeather.ProvidedModelOps, MVP_DetailsWeather.RequiredViewOps, DetailsWeatherModel>
         implements MVP_DetailsWeather.RequiredPresenterOps, MVP_DetailsWeather.ProvidedPresenterOps {
 
@@ -26,18 +25,9 @@ public class DetailsWeatherPresenter extends GenericPresenter<MVP_DetailsWeather
     }
 
     @Override
-    public void onDestroy(boolean isChangingConfiguration) {
-        //Don't call super except activity (not fragment) is being destroyed !!
-        //super.onDestroy(isChangingConfiguration);
-    }
-
-    @Override
     public void onConfigurationChanged(MVP_DetailsWeather.RequiredViewOps view) {
         setView(view);
     }
-
-    @Override
-    public void onBackPressed() {}
 
     ///My future operations///
 }

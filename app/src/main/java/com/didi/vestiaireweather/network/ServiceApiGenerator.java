@@ -33,8 +33,8 @@ public class ServiceApiGenerator {
                 .baseUrl(baseUrl)
                 //Add jackson converter to de/serialization
                 .addConverterFactory(JacksonConverterFactory.create())
-                //To use RxJava
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create());
+                //To use RxJava + Special error handling
+                .addCallAdapterFactory(RxErrorHandlingCallAdapterFactory.create());
 
         //Chrome plugin tool enabling
         if(!httpClient.networkInterceptors().contains(stethoInterceptor)) {

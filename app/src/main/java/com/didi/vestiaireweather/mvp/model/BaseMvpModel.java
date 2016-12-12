@@ -1,7 +1,9 @@
 package com.didi.vestiaireweather.mvp.model;
 
-import android.util.Log;
-
+import com.didi.vestiaireweather.R;
+import com.didi.vestiaireweather.mvp.presenter.RequiredPresenterCommonOps;
+import com.didi.vestiaireweather.network.RetrofitException;
+import com.didi.vestiaireweather.utils.SnackBarUtils;
 import com.tinmegali.mvp.mvp.GenericModel;
 import com.tinmegali.mvp.mvp.ModelOps;
 
@@ -12,7 +14,7 @@ import rx.Subscription;
  * Each "Model" layer will have access to these common ops
  */
 
-class BaseMvpModel<RequiredPresenterOps> extends GenericModel<RequiredPresenterOps>
+class BaseMvpModel<RequiredPresenterOps extends RequiredPresenterCommonOps> extends GenericModel<RequiredPresenterOps>
         implements ModelOps<RequiredPresenterOps> {
 
     Subscription anySubscription;
@@ -33,20 +35,15 @@ class BaseMvpModel<RequiredPresenterOps> extends GenericModel<RequiredPresenterO
      * @param throwable error
      */
     void showSnackBarErrorApi(Throwable throwable) {
-        String errorMessage;
+        String errorMessageValue;
+        if(throwable != null) {
+            errorMessageValue = throwable.getMessage();
+            getPresenter().onShowSnack(R.string.error_generic_with_info, errorMessageValue, SnackBarUtils.SnackBarType.ALERT);
 
-//        if(throwable != null) {
-//            if(throwable.getCause().getClass() == SocketTimeoutException.class) {
-//                Log.e("error", "timeout");
-//            } else Log.e("error", throwable.getMessage());
-//        }
-
-        Log.e("error", throwable.getMessage());
-        //TODO show snack
-        /*
-        if(throwable == null) errorMessage = getAppContext().getString(R.string.error_generic_with_info);
-        else errorMessage = getAppContext().getString(R.string.error_generic_with_info, throwable.getMessage());
-        getPresenter().onShowSnack(errorMessage, SnackBarType.ALERT);
-        */
+            //Special case if network problem :p
+            if(((RetrofitException) throwable).getKind() == RetrofitException.Kind.NETWORK)
+                getPresenter().onShowSnack(R.string.error_network, null, SnackBarUtils.SnackBarType.ALERT);
+        } else
+            getPresenter().onShowSnack(R.string.error_generic, null, SnackBarUtils.SnackBarType.ALERT);
     }
 }

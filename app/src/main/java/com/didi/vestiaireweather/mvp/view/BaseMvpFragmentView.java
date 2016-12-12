@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.MenuItem;
 
 import com.didi.vestiaireweather.activity.BaseActivity;
+import com.didi.vestiaireweather.utils.SnackBarUtils;
 import com.tinmegali.mvp.mvp.GenericMVPFragment;
 import com.tinmegali.mvp.mvp.PresenterOps;
 
@@ -15,7 +16,8 @@ import com.tinmegali.mvp.mvp.PresenterOps;
 
 public class BaseMvpFragmentView<ActivityViewCommonOps, RequiredViewOps,
         ProvidedPresenterOps, PresenterType extends PresenterOps<RequiredViewOps>>
-        extends GenericMVPFragment<ActivityViewCommonOps, RequiredViewOps, ProvidedPresenterOps, PresenterType> {
+        extends GenericMVPFragment<ActivityViewCommonOps, RequiredViewOps, ProvidedPresenterOps, PresenterType>
+        implements FragmentViewCommonOps{
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,5 +45,11 @@ public class BaseMvpFragmentView<ActivityViewCommonOps, RequiredViewOps,
     protected void showNavigationIcon(boolean visible){
         if(((BaseActivity) mActivity.get()).getSupportActionBar() != null)
             ((BaseActivity) mActivity.get()).getSupportActionBar().setDisplayHomeAsUpEnabled(visible);
+    }
+
+
+    @Override
+    public void showingSnack(int resStringId, String errorValue, SnackBarUtils.SnackBarType snackBarType) {
+        ((BaseActivity) mActivity.get()).showSnackBar(resStringId, errorValue, snackBarType);
     }
 }

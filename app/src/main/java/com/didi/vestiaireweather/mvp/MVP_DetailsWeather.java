@@ -1,7 +1,8 @@
 package com.didi.vestiaireweather.mvp;
 
 import com.didi.vestiaireweather.data.model.vestiaire.WeatherDayVestiaire;
-import com.tinmegali.mvp.mvp.ContextView;
+import com.didi.vestiaireweather.mvp.presenter.RequiredPresenterCommonOps;
+import com.didi.vestiaireweather.mvp.view.FragmentViewCommonOps;
 import com.tinmegali.mvp.mvp.ModelOps;
 import com.tinmegali.mvp.mvp.PresenterOps;
 
@@ -16,7 +17,7 @@ public interface MVP_DetailsWeather {
     /**
      * Presenter -> View
      */
-    interface RequiredViewOps extends ContextView {
+    interface RequiredViewOps extends FragmentViewCommonOps {
         void showWeatherDetails(WeatherDayVestiaire weatherDayVestiaire);
     }
 
@@ -28,8 +29,7 @@ public interface MVP_DetailsWeather {
     /**
      * Model -> Presenter
      */
-    interface RequiredPresenterOps {
-    }
+    interface RequiredPresenterOps extends RequiredPresenterCommonOps {}
 
     /**
      * Presenter -> Model
